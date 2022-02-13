@@ -1,7 +1,10 @@
 import React from "react";
 
-import { classNames } from "../utils/common";
 import { TETROMINOS } from "../constants";
+
+const classNames = (...classes: string[]) => {
+  return classes.filter(Boolean).join(" ");
+};
 
 type Props = {
   type: keyof typeof TETROMINOS;
@@ -10,7 +13,7 @@ type Props = {
 const Cell: React.FC<Props> = ({ type }) => {
   const shapeColor = TETROMINOS[type].color;
 
-  return <div className={classNames(`h-8 w-8 ${shapeColor}`)}></div>;
+  return <div className={classNames(`h-8 w-8 ${shapeColor}`)} />;
 };
 
 export default React.memo(Cell);
